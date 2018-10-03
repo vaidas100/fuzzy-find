@@ -1,5 +1,26 @@
 from unittest import TestCase
+
+from american_soundex import AmericanSoundex
 from file_chunk_reader import FileChunkReader
+
+
+class TestAmericanSoundex(TestCase):
+    def test_get_american_soundex_code(self):
+        test_data = {
+            b"Robert": "R163",
+            b"Rupert": "R163",
+            b"Rubin": "R150",
+            b"Ashcraft": "A261",
+            b"Ashcroft": "A261",
+            b"Tymczak": "T522",
+            b"Pfister": "P236",
+            b"Honeyman": "H555",
+        }
+        for text in test_data:
+            self.assertEqual(
+                AmericanSoundex.get_code(text),
+                test_data[text]
+            )
 
 
 class TestFileChunkReader(TestCase):
