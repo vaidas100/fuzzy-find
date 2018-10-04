@@ -7,19 +7,48 @@ from file_chunk_reader import FileChunkReader
 class TestAmericanSoundex(TestCase):
     def test_get_american_soundex_code(self):
         test_data = {
-            b"Robert": "R163",
-            b"Rupert": "R163",
-            b"Rubin": "R150",
-            b"Ashcraft": "A261",
-            b"Ashcroft": "A261",
-            b"Tymczak": "T522",
-            b"Pfister": "P236",
-            b"Honeyman": "H555",
+            "Robert": "R163",
+            "Rupert": "R163",
+            "Rubin": "R150",
+            "Ashcraft": "A261",
+            "Ashcroft": "A261",
+            "Tymczak": "T522",
+            "Pfister": "P236",
+            "Honeyman": "H555",
         }
         for text in test_data:
+            expected = test_data[text]
+            result = AmericanSoundex.get_code_from_string(text)
             self.assertEqual(
-                AmericanSoundex.get_code(text),
-                test_data[text]
+                expected,
+                result,
+                "AmericanSoundex.get_code_from_string(%s) returns %s instead of %s" % (
+                    text,
+                    result,
+                    expected
+                )
+            )
+        test_data_bytes = {
+            b"Robert": b"R163",
+            b"Rupert": b"R163",
+            b"Rubin": b"R150",
+            b"Ashcraft": b"A261",
+            b"Ashcroft": b"A261",
+            b"Tymczak": b"T522",
+            b"Pfister": b"P236",
+            b"Honeyman": b"H555",
+        }
+        for text in test_data_bytes:
+            expected = test_data_bytes[text]
+            result = AmericanSoundex.get_code_from_bytes(text)
+            self.assertEqual(
+                expected,
+                result,
+                "AmericanSoundex.get_code_from_bytes(%s) returns %s instead of %s" % (
+                    text,
+                    result,
+                    expected
+                )
             )
 
 
