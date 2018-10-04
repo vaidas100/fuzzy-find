@@ -94,22 +94,6 @@ class AmericanSoundex:
         :return: American Soundex code.
         """
 
-        # Convert bytes to string
-        if isinstance(text, (bytes, bytearray)):
-            success = False
-            for encoding in ["utf-8", "latin_1", "ascii"]:
-                try:
-                    decoded = text.decode(encoding)
-                    text = decoded
-                    logger.debug("Bytes decoded with %s encoding successfully." % encoding)
-                    success = True
-                    break
-                except:
-                    logger.debug("Bytes decoding with %s encoding failed." % encoding)
-            if not success:
-                logger.error("Can't decode bytes to string")
-                exit(1)
-
         # Convert the word to lower case
         text = text.lower()
 
