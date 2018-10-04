@@ -88,7 +88,7 @@ consonant_to_digit_bytes_mapping = {
 class AmericanSoundex:
 
     @staticmethod
-    def get_code(text):
+    def get_code_from_string(text):
         """Generate American Soundex code for given text.
         :param text: Text.
         :return: American Soundex code.
