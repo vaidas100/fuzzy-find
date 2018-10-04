@@ -6,23 +6,21 @@ from file_chunk_reader import FileChunkReader
 import time
 
 # Compare string vs bytes AmericanSoundex.get_code... methods
-
+print("Comparing string vs bytes AmericanSoundex.get_code... methods:")
 number = 10000
-
 start = time.time()
 for x in range(number + 1):
     aaa = AmericanSoundex.get_code_from_string("Honeyman")
 elapsed = time.time() - start
-print("AmericanSoundex.get_code_from_string %s times done in %s s" % (
+print("1) AmericanSoundex.get_code_from_string %s times done in %s s" % (
     number,
     elapsed
 ))
-
 start = time.time()
 for x in range(number + 1):
     aaa = AmericanSoundex.get_code_from_bytes(b"Honeyman")
 elapsed = time.time() - start
-print("AmericanSoundex.get_code_from_bytes %s times done in %s s" % (
+print("2) AmericanSoundex.get_code_from_bytes  %s times done in %s s" % (
     number,
     elapsed
 ))
