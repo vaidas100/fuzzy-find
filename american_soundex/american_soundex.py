@@ -85,6 +85,7 @@ consonant_to_digit_bytes_mapping = {
     b'r': b'6',
 }
 
+
 class AmericanSoundex:
 
     @staticmethod
