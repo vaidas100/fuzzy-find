@@ -22,7 +22,7 @@ __author__ = 'Vaidotas Senkus <vaidas100@gmail.com>'
 class FileChunkReader:
 
     def __init__(self, file_path, chunk_size=1000000):
-        """Open file and calculate chunk number.
+        """Open file and calculate chunk count.
         :param file_path: File path.
         :param chunk_size: File chunk size. Defaults to 1 MB.
         """
