@@ -3,54 +3,10 @@ from unittest import TestCase
 from american_soundex import AmericanSoundex
 from file_chunk_reader import FileChunkReader
 
-import time
-
-# Compare string vs bytes AmericanSoundex.get_code... methods
-print("Comparing string vs bytes AmericanSoundex.get_code... methods:")
-number = 10000
-start = time.time()
-for x in range(number + 1):
-    aaa = AmericanSoundex.get_code_from_string("Honeyman")
-elapsed = time.time() - start
-print("1) AmericanSoundex.get_code_from_string %s times done in %s s" % (
-    number,
-    elapsed
-))
-start = time.time()
-for x in range(number + 1):
-    aaa = AmericanSoundex.get_code_from_bytes(b"Honeyman")
-elapsed = time.time() - start
-print("2) AmericanSoundex.get_code_from_bytes  %s times done in %s s" % (
-    number,
-    elapsed
-))
-
 
 class TestAmericanSoundex(TestCase):
     def test_get_american_soundex_code(self):
         test_data = {
-            "Robert": "R163",
-            "Rupert": "R163",
-            "Rubin": "R150",
-            "Ashcraft": "A261",
-            "Ashcroft": "A261",
-            "Tymczak": "T522",
-            "Pfister": "P236",
-            "Honeyman": "H555",
-        }
-        for text in test_data:
-            expected = test_data[text]
-            result = AmericanSoundex.get_code_from_string(text)
-            self.assertEqual(
-                expected,
-                result,
-                "AmericanSoundex.get_code_from_string(%s) returns %s instead of %s" % (
-                    text,
-                    result,
-                    expected
-                )
-            )
-        test_data_bytes = {
             b"Robert": b"R163",
             b"Rupert": b"R163",
             b"Rubin": b"R150",
@@ -60,8 +16,8 @@ class TestAmericanSoundex(TestCase):
             b"Pfister": b"P236",
             b"Honeyman": b"H555",
         }
-        for text in test_data_bytes:
-            expected = test_data_bytes[text]
+        for text in test_data:
+            expected = test_data[text]
             result = AmericanSoundex.get_code_from_bytes(text)
             self.assertEqual(
                 expected,
