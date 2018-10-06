@@ -1,10 +1,24 @@
+import logging
+import sys
+import unittest
 from unittest import TestCase
 
 from american_soundex import AmericanSoundex
 from file_chunk_reader import FileChunkReader
 
+logging.basicConfig(
+    format='%(asctime)s %(levelname)s: %(message)s'
+)
+logger = logging.getLogger()
+
+# ensure python 3 is used
+if sys.version_info[0] < 3:
+    logger.error("Must be using Python 3")
+    exit(1)
+
 
 class TestAmericanSoundex(TestCase):
+
     def test_get_american_soundex_code(self):
         test_data = {
             b"Robert": b"R163",
@@ -31,6 +45,7 @@ class TestAmericanSoundex(TestCase):
 
 
 class TestFileChunkReader(TestCase):
+
     def test_get_chunk(self):
         file_path = "file_chunk_reader/__init__.py"
         fcr = FileChunkReader(file_path, chunk_size=10)
@@ -48,3 +63,7 @@ class TestFileChunkReader(TestCase):
         fcr.close()
         self.assertEqual(file_chunk_text0, b"from .file_chunk_reader ")
         self.assertEqual(file_chunk_text1, b"import FileChunkReader\n")
+
+
+if __name__ == '__main__':
+    unittest.main()
