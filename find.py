@@ -17,6 +17,8 @@ Sample output:
     Lithuanian
     Latvia
     Lithuanians
+
+TODO: Fix logging for Python 3.7: --logging_level argument not working.
 """
 
 import argparse
