@@ -1,12 +1,12 @@
 # tesonet-word-search
 
-CLI tool that finds phrases in a given text file.
+tesonet-word-search - CLI tool that finds phrases in a given text file.
 
-Returns the top unique 5 matched words.
+Software returns the top unique 5 matched words.
 
 Search phrase (single word) can be misspelled.
 
-For word matching and shoring uses:
+For word matching and scoring software uses:
 
 1. American Soundex algorithm:
 
@@ -36,7 +36,6 @@ Install:
 Clone or download:
 
     https://github.com/vaidas100/tesonet-word-search
-
 
 ### Testing
 
