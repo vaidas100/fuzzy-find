@@ -9,12 +9,58 @@ Search phrase (single word) can be misspelled.
 For word matching and shoring uses:
 
 1. American Soundex algorithm:
+
     https://en.wikipedia.org/wiki/Soundex#American_Soundex
+
 2. The Levenshtein distance:
+
     https://en.wikipedia.org/wiki/Levenshtein_distance
+
 3. Length difference
 
-### Usage
+## Getting Started
+
+### Prerequisites
+
+Install:
+1. Python 3:
+
+    https://www.python.org/
+
+2. python-Levenshtein module:
+
+    https://pypi.org/project/python-Levenshtein/
+
+### Source code
+
+Clone or download:
+
+    https://github.com/vaidas100/tesonet-word-search
+
+
+### Testing
+
+To ensure that everything is working run:
+
+    $ python3 ./test.py
+
+Output should look like this:
+
+    ...
+    ----------------------------------------------------------------------
+    Ran 3 tests in 0.001s
+    
+    OK
+
+## Usage
+
+### Help
+
+To get help run:
+
+    $ python3 ./find.py --help
+
+You should see information about arguments:
 
     usage: find.py [-h] [-l {ERROR,DEBUG}] file_path phrase
 
@@ -29,9 +75,11 @@ For word matching and shoring uses:
 
 ### Sample usage
 
+You can use sample text file like this:
+
     $ python3 ./find.py wiki_lt.txt lituania
 
-### Sample output
+And you get 5 best matching words:
 
     Lithuania
     Lietuva
@@ -39,6 +87,8 @@ For word matching and shoring uses:
     Latvia
     Lithuanians
 
-### Testing
 
-    $ python3 ./test.py
+### Author
+
+Vaidotas Senkus
+<vaidas100@gmail.com>
