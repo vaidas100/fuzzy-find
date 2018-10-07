@@ -122,21 +122,35 @@ if __name__ == '__main__':
     start_time = time.time()
 
     # parse command-line arguments
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description="""CLI tool that finds phrases in a given text file.
+Returns the top unique 5 matched words.
+Search phrase (single word) can be misspelled.""",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        add_help=False
+    )
     parser.add_argument(
+        '-h',
+        '--help',
+        action='help',
+        default=argparse.SUPPRESS,
+        help='Show this help message and exit.'
+    )
+    parser.add_argument(
+        '-l',
         '--logging_level',
         dest='logging_level',
-        help='Logging level',
+        help='Logging level.',
         choices=['ERROR', 'DEBUG'],
         default='ERROR',
     )
     parser.add_argument(
         "file_path",
-        help="Text file path",
+        help="Text file path.",
     )
     parser.add_argument(
         "phrase",
-        help="Search phrase",
+        help="Search phrase.",
     )
     args = parser.parse_args()
     if args.logging_level == "ERROR":
