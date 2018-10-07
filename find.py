@@ -51,7 +51,7 @@ __version__ = '1.0'
 __author__ = 'Vaidotas Senkus <vaidas100@gmail.com>'
 
 
-def process_text(process_num, file_chunk_num, file_chunk_text):
+def process_text(args, process_num, file_chunk_num, file_chunk_text):
 
     # search for words, soundex codes and levenshtein distance
     words = {}
@@ -105,7 +105,7 @@ def process_text(process_num, file_chunk_num, file_chunk_text):
         result_file.write(json.dumps(words_5_best, indent=3))
 
 
-def worker(process_num, file_chunk_nums):
+def worker(args, process_num, file_chunk_nums):
     for file_chunk_num in file_chunk_nums:
 
         # get file chunk text
@@ -114,7 +114,7 @@ def worker(process_num, file_chunk_nums):
         file_chunk_reader.close()
 
         # process chunk text
-        process_text(process_num, file_chunk_num, file_chunk_text)
+        process_text(args, process_num, file_chunk_num, file_chunk_text)
 
 
 if __name__ == '__main__':
@@ -197,6 +197,7 @@ Search phrase (single word) can be misspelled.""",
         proc = multiprocessing.Process(
             target=worker,
             args=(
+                args,
                 process_num,
                 itertools.islice(
                     chunk_nums,
