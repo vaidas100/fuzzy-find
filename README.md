@@ -23,7 +23,7 @@ For word matching and scoring software uses:
 ### Prerequisites
 
 Install:
-1. Python 3:
+1. Python 3 (recommended 3.6.6):
 
     https://www.python.org/
 
