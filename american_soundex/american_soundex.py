@@ -52,7 +52,13 @@ as 2 twice since a vowel lies in between them).
 "Pfister" yields "P236" not "P123"
 (the first two letters have the same number
 and are coded once as 'P'),
-and "Honeyman" yields "H555"."""
+and "Honeyman" yields "H555".
+
+Usage:
+    from american_soundex import AmericanSoundex
+
+    word_code = AmericanSoundex.get_code_from_bytes(word)
+"""
 
 import logging
 
