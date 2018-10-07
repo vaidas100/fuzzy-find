@@ -1,6 +1,6 @@
 # tesonet-word-search
 
-tesonet-word-search - CLI tool that finds phrases in a given text file.
+CLI tool that finds phrases in a given text file.
 
 Software returns the top unique 5 matched words.
 
