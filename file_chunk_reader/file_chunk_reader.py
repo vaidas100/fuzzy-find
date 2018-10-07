@@ -3,8 +3,8 @@
 Usage:
     from file_chunk_reader import FileChunkReader
 
-    fileChunkReader = FileChunkReader(file_path)
-    fifth_file_chunk_text = fileChunkReader.get_chunk(4)
+    file_chunk_reader = FileChunkReader(file_path)
+    fifth_file_chunk_text = file_chunk_reader.get_chunk(4)
     fileChunkReader.close()
 """
 
