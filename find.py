@@ -1,7 +1,7 @@
 """CLI tool that finds phrases in a given text file.
 Software returns the top unique 5 matched words.
 Search phrase (single word) can be misspelled.
-For word matching and shoring uses:
+For word matching and scoring software uses:
 1. American Soundex algorithm:
     https://en.wikipedia.org/wiki/Soundex#American_Soundex
 2. The Levenshtein distance:
@@ -76,7 +76,7 @@ def process_text(process_num, file_chunk_num, file_chunk_text):
                     )
                     # get length difference
                     length_difference = abs(len(word) - len(args.phrase))
-                    # to get word shore
+                    # to get word score
                     # combine levenshtein distance of soundex codes with length difference
                     # (result is float)
                     word_score = levenshtein_distance + length_difference / 10
