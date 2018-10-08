@@ -18,7 +18,6 @@ Sample output:
     Latvia
     Lithuanians
 
-TODO: Fix logging for Windows OS: --logging_level argument not working.
 """
 
 import argparse
@@ -54,6 +53,8 @@ __author__ = 'Vaidotas Senkus <vaidas100@gmail.com>'
 
 
 def process_text(args, process_num, file_chunk_num, file_chunk_text):
+
+    logger.setLevel(args.logging_level)  # logging fix for Windows OS
 
     # search for words, soundex codes and levenshtein distance
     words = {}
@@ -155,10 +156,11 @@ Search phrase (single word) can be misspelled.""",
         help="Search phrase.",
     )
     args = parser.parse_args()
-    if args.logging_level == "ERROR":
-        logger.setLevel(logging.ERROR)
-    elif args.logging_level == "DEBUG":
-        logger.setLevel(logging.DEBUG)
+    if args.logging_level == "DEBUG":
+        args.logging_level = logging.DEBUG
+    else:
+        args.logging_level = logging.ERROR
+    logger.setLevel(args.logging_level)
     if os.path.exists(args.file_path):
         args.file_path = os.path.abspath(args.file_path)
         args.file_dir = os.path.dirname(args.file_path)
