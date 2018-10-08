@@ -104,8 +104,12 @@ def process_text(args, process_num, file_chunk_num, file_chunk_text):
         args.results_dir,
         "%s.json" % file_chunk_num
     )
-    with open(result_file_path, 'w') as result_file:
-        result_file.write(json.dumps(words_5_best, indent=3))
+    try:
+        with open(result_file_path, 'w') as result_file:
+            result_file.write(json.dumps(words_5_best, indent=3))
+    except:
+        logger.error("Can't write to file: %s" % result_file_path)
+        exit(1)
 
 
 def worker(args, process_num, file_chunk_nums):
@@ -189,9 +193,13 @@ Search phrase (single word) can be misspelled.""",
         )
 
     # create empty dir for results
-    if os.path.exists(args.results_dir):
-        shutil.rmtree(args.results_dir)
-    os.mkdir(args.results_dir)
+    try:
+        if os.path.exists(args.results_dir):
+            shutil.rmtree(args.results_dir)
+        os.mkdir(args.results_dir)
+    except:
+        logger.error("Don't have permissions for directory: %s" % args.results_dir)
+        exit(1)
 
     # split work for each CPU
     processes_num = multiprocessing.cpu_count()
