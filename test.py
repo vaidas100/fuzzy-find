@@ -4,9 +4,6 @@ import sys
 import unittest
 from unittest import TestCase
 
-from american_soundex import AmericanSoundex
-from file_chunk_reader import FileChunkReader
-
 logging.basicConfig(
     format='%(asctime)s %(levelname)s: %(message)s'
 )
@@ -16,6 +13,9 @@ logger = logging.getLogger()
 if sys.version_info[0] < 3:
     logger.error("Must be using Python 3")
     exit(1)
+
+from american_soundex import AmericanSoundex
+from file_chunk_reader import FileChunkReader
 
 root_dir = os.path.abspath(os.path.dirname(__file__))
 
