@@ -52,7 +52,7 @@ __version__ = '1.0'
 __author__ = 'Vaidotas Senkus <vaidas100@gmail.com>'
 
 
-def process_text(args, process_num, file_chunk_num, file_chunk_text):
+def process_text(args, process_num, file_chunk_num, chunk_count, file_chunk_text):
 
     logger.setLevel(args.logging_level)  # logging fix for Windows OS
 
@@ -92,9 +92,10 @@ def process_text(args, process_num, file_chunk_num, file_chunk_text):
         words_5_best[word] = words[word]
 
     logger.debug(
-        "CPU:{process_num} CHUNK:{file_chunk_num} WORDS:\n{words}".format(
+        "CPU:{process_num} CHUNK:{file_chunk_num}/{chunk_count} WORDS:\n{words}".format(
             process_num=process_num,
             file_chunk_num=file_chunk_num,
+            chunk_count=chunk_count,
             words=json.dumps(words_5_best, indent=3)
         )
     )
@@ -121,7 +122,13 @@ def worker(args, process_num, file_chunk_nums):
         file_chunk_reader.close()
 
         # process chunk text
-        process_text(args, process_num, file_chunk_num, file_chunk_text)
+        process_text(
+            args,
+            process_num,
+            file_chunk_num,
+            file_chunk_reader.chunk_count - 1,
+            file_chunk_text
+        )
 
 
 if __name__ == '__main__':
