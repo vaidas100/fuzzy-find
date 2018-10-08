@@ -18,7 +18,7 @@ Sample output:
     Latvia
     Lithuanians
 
-TODO: Fix logging for Python 3.7: --logging_level argument not working.
+TODO: Fix logging for Windows OS: --logging_level argument not working.
 """
 
 import argparse
